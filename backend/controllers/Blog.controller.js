@@ -102,7 +102,6 @@ exports.deleteBlog = async (req, res, next) => {
   }
   return res.status(200).json({ message: "Blog deleted" });
 };
-//.sort({updatedAt: -1})
 
 exports.getByUserId = async (req, res, next) => {
   const userId = req.params.id;
@@ -120,4 +119,10 @@ exports.getByUserId = async (req, res, next) => {
     return res.status(404).json({ message: "No blogs found" });
   }
   return res.status(200).json({ user: userBlogs });
+};
+
+
+
+exports.getGarima = async (req, res, next) => {
+  res.json("Garim started")
 };

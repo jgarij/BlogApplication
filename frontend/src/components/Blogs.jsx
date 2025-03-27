@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react'
 import axios from 'axios'
 import Blog from './Blog'
-
+// import CommentSection from './CommentSection'
 export default function Blogs() {
 
   const [blogs, setBlogs] = useState()
@@ -21,10 +21,23 @@ export default function Blogs() {
   
   return (
     <div>
-      {blogs && blogs.map((blog, index) => (
-      <Blog isUser = { localStorage.getItem('userId') === blog.user._id} blogId={blog._id}
-      key={index} title = {blog.title} description ={blog.description} imageURL = {blog.image} userName = {blog.user.name} blog_Date = {blog.updatedAt}/>  // or key={blog._id} 
-      )) }
+     {blogs &&
+  blogs.map((blog, index) => (
+    
+    <div key={index}>
+      <Blog
+        isUser={localStorage.getItem("userId") === blog.user._id}
+        blogId={blog._id}
+        title={blog.title}
+        description={blog.description}
+        imageURL={blog.image}
+        userName={blog.user.name}
+        blog_Date={blog.updatedAt}
+      />
+     {/* <CommentSection blogId={blog._id} /> */}
+    </div>
+  ))}
+
     </div>
   )
 }
